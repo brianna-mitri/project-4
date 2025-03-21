@@ -3,7 +3,6 @@ Work/DB_Work/Data/Aircraft/MASTER.csv
 Work/DB_Work/Data/Aircraft/ACFTREF.csv
 Work/DB_Work/Output/flight_delays.csv
 Work/DB_Work/Output/modeling_data.csv
-Work/DB_Work/Output/Bug_Hunting/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
