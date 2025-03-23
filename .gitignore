@@ -7,6 +7,10 @@ Work/DB_Work/Output/modeling_data.csv
 Work/DB_Work/Output/modeling_data_imputed.csv
 Resources/Aircraft/ACFTREF.csv
 Resources/Aircraft/MASTER.csv
+Preprocessing/Output/Delays/modeling_data.csv
+Preprocessing/Output/Delays/flight_delays.csv
+Preprocessing/Output/Delays/modeling_data_testing.csv
+Preprocessing/Output/Delays/modeling_data_training.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
