@@ -195,3 +195,9 @@ Thumbs.db
 
 # Ignore Visual Studio Code settings folder
 .vscode/
+
+# Ignore large files
+Preprocessing/Output/Split_Train_Test/balanced/x_train.zip
+Preprocessing/Output/Split_Train_Test/balanced/y_train.zip
+Preprocessing/Output/Split_Train_Test/balanced/x_test.zip
+Preprocessing/Output/Split_Train_Test/balanced/y_test.zip
