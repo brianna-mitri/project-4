@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Predicting Potential Flight Delays</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<style>
+    /* Custom Navbar Styling */
+    .navbar {
+        background: linear-gradient(45deg, #21f35d, #3a9ab7);
+        position: fixed; /* Keep navbar on the left */
+        top: 0;
+        left: 0;
+        width: 250px; /* Sidebar width */
+        height: 100vh; /* Full height */
+        padding: 20px; /* Space to align items */
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align text to the left */
+        width: 100%; /* Full width */
+        padding-left: 0;
+        margin-top: 20px; /* Space from top */
+        gap: 10px; /* Space between items */
+    }
+
+    .navbar .nav-item {
+        width: 100%;
+        position: relative; /* Required for proper dropdown positioning */
+    }
+
+    /* Move items slightly to the left */
+    .navbar .nav-link {
+        color: black !important;
+        text-decoration: none;
+        padding: 10px 5px; /* Reduce right padding */
+        display: block; /* Full width clickable */
+        margin-left: -10px; /* Move text slightly left */
+    }
+
+    /* Dropdown expands to the right */
+    .dropdown-menu {
+        background-color: #3a5db7;
+        position: absolute; /* Position it relative to the parent */
+        left: 100%; /* Move dropdown to the right */
+        top: 0; /* Align dropdown with the menu item */
+        min-width: 400px; /* Ensure it has enough space */
+        display: none; /* Hide by default */
+    }
+
+    /* Ensure dropdown expands to the right */
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-item {
+        color: white !important;
+    }
+
+    .dropdown-item:hover {
+        background-color: #2a4a97;
+    }
+
+    /* Center content properly */
+    .container {
+        margin-left: 270px; /* Prevent content from hiding behind navbar */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* Center content vertically */
+    }
+
+    .content-box {
+        text-align: center; /* Center text */
+        max-width: 800px; /* Limit content width for better readability */
+        padding: 20px;
+    }
+
+    /* Ensure proper spacing between title, image, and text */
+    h2 {
+        margin-bottom: 30px; /* Space below title */
+    }
+
+    .img-fluid {
+        display: block;
+        margin: 20px auto; /* Space above and below image */
+    }
+
+    p {
+        margin-bottom: 20px; /* Space between paragraphs */
+    }
+</style>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <!-- Navbar Items -->
+            <ul class="navbar-nav">
+                <!-- Home -->
+                <li class="nav-item">
+                    <a class="nav-link active" href="./index.html"><strong>🏠 Home</strong></a>
+                </li>
+
+                <!-- LAX Flight Information Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu" role="button">
+                        <strong>🛩️ LAX Flight Information</strong>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="https://public.tableau.com/app/profile/viz/Tableau_Challenge_Dashboard2/TrendsandPeakUsage?publish=yes" target="_blank">👩‍✈️ Tableau Data Visualization Dashboard</a></li>
+                        <li><a class="dropdown-item" href="./Predictive_Model.html">✈️ Flight Selection for Forecasting Potential Delays</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content - Centered Text and Image with Proper Spacing -->
+    <div class="container">
+        <div class="content-box">
+            <h2 class="text-center mb-4">Potential Flight Delays</h2>  <!-- Added margin-bottom -->
+            <img class="img-fluid mt-4 mb-4" src="image/Frustrated_Traveler.jpeg" alt="Frustrated Traveler"> <!-- Added margin above & below -->
+            <p class="mb-4">We aim to analyze data related to flights departing from Los Angeles International Airport (LAX) to various destinations across the United States. Our exploration will include flight records, airplane models, and weather conditions, among other relevant factors.</p>
+            <p class="mb-4">Our primary objective is to develop a predictive model that can help travelers anticipate potential flight delays. This model will provide insights based on key variables such as departure date, departure time, airline, and destination airport. Additionally, two variables—weather conditions and airplane model—will be randomly selected for further analysis to assess their impact on flight delays.</p>
+            <p class="mb-4">Before constructing the predictive model, we will first conduct an in-depth exploration of the flight data. This dataset has been organized into a Tableau dashboard, allowing us to visualize and interpret key trends effectively. Through this initial analysis, we aim to identify significant patterns and correlations that will enhance the accuracy and reliability of our model.</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
