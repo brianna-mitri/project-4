@@ -36,7 +36,10 @@ def predict():
     Get user inputs, preprocess inputs, give to model, and return prediction
     '''
     try:
+        # ----------------------------------------
         # parse input from form
+        # ----------------------------------------
+        #  time info
         date = request.form.get('date')
         parsed_date = datetime.strptime(date, '%m/%d/%Y')
 
@@ -46,11 +49,28 @@ def predict():
         parsed_time = datetime.strptime(datetime_str, "%I:%M %p")
         total_minutes = parsed_time.hour * 60 + parsed_time.minute
 
+        flight_length_min = request.form.get('flight_length_min')  #scheduled flight length in minutes
+
+        # Airline/Plane info
+        carrier_code = request.form.get('carrier_code')  #airline
+        dest_airport = request.form.get('dest_airport')
+        manufacturer = request.form.get('manufacturer')
+        plane_model = request.form.get('plane_model')
+
+        aircraft_age = request.form.get('aircraft_age')
+        aircraft_age_missing = 0  #default
+
+        engine_type = request.form.get('engine_type')
+        seat_cnt = request.form.get('seat_cnt')
+        builder_certificated = request.form.get('builder_certificated')  #true or false
+
+
         # dest_airport = request.form.get('dest_airport')
         # weather = request.form.get('weather')
         
-
+        # ----------------------------------------
         # convert cyclical variables
+        # ----------------------------------------
         month_sin = math.sin(2 * math.pi * (parsed_date.month / 12.0))
         month_cos = math.cos(2 * math.pi * (parsed_date.month / 12.0))
 
@@ -63,8 +83,9 @@ def predict():
         minutes_sin = math.sin(2 * math.pi * total_minutes / 1440.0)
         minutes_cos = math.cos(2 * math.pi * total_minutes / 1440.0)
 
-
-
+        # ----------------------------------------
+        # convert into a DF
+        # ----------------------------------------
         # convert into a dict
         row_dict = {
             "Month (sin)": month_sin,
@@ -75,6 +96,16 @@ def predict():
             "Day of Week (cos)": dow_cos,
             "Scheduled Departure Total Minutes (sin)": minutes_sin,
             "Scheduled Departure Total Minutes (cos)": minutes_cos,
+            "Scheduled Elapsed Time": int(flight_length_min),
+            "Carrier Code": carrier_code,
+            "Destination Airport": dest_airport,
+            "Manufacturer": manufacturer,
+            "Model": plane_model,
+            "Aircraft Age": int(aircraft_age),
+            "Aircraft Age Missing": int(aircraft_age_missing),
+            "Type of Engine": engine_type,
+            "Number of Seats": seat_cnt,
+            "Builder Type Certificated": int(builder_certificated),
         }
 
         # convert all variables into a df

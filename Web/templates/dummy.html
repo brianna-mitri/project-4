@@ -10,7 +10,9 @@
     <!-- Form -->
     <h1>Predict Flight Departure Delay</h1>
     <form action="{{ url_for('predict') }}" method="POST">
-
+        <!----------------------------------------------->
+        <!-- TIME INFO -->
+        <!----------------------------------------------->
         <!-- Date -->
         <label for="date">Departure Date (mm/dd/yyyy)</label>
         <input type="text" name="date" id="date"/>
@@ -25,6 +27,49 @@
             <option value="PM">PM</option>
         </select>
 
+        <!-- Expected Flight Time in Minutes-->
+        <label for="flight_length_min">Scheduled Flight Length (minutes):</label>
+        <input type="text" name="flight_length_min" id="flight_length_min" /><br><br>
+
+        <!----------------------------------------------->
+        <!-- AIRLINE/PLANE INFO -->
+        <!----------------------------------------------->
+        <!-- Carrier Code (origin airport) -->
+        <label for="carrier_code">Carrier Code:</label>
+        <input type="text" name="carrier_code" id="carrier_code" /><br><br>
+
+        <!-- Destination Airport -->
+        <label for="dest_airport">Destination Airport:</label>
+        <input type="text" name="dest_airport" id="dest_airport" /><br><br>
+
+        <!-- Manufacturer -->
+        <label for="manufacturer">Manufacturer:</label>
+        <input type="text" name="manufacturer" id="manufacturer" /><br><br>
+
+        <!-- Plane Model -->
+        <label for="plane_model">Plane Model:</label>
+        <input type="text" name="plane_model" id="plane_model" /><br><br>
+
+        <!-- Aircraft Age -->
+        <label for="aircraft_age">Aircraft Age:</label>
+        <input type="text" name="aircraft_age" id="aircraft_age" /><br><br>
+
+        <!-- Engine Type -->
+        <label for="engine_type">Engine Type:</label>
+        <input type="text" name="engine_type" id="engine_type" /><br><br>
+
+        <!-- Number of Seats -->
+        <label for="seat_cnt">Number of Seats:</label>
+        <input type="text" name="seat_cnt" id="seat_cnt" /><br><br>
+
+        <!-- Builder Type Certificated -->
+        <label for="builder_certificated">Builder Type Certificated?</label>
+        <select name="builder_certificated" id="builder_certificated">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <!-- Aircraft Age -->
         <label for="dest_airport">Destination Airport:</label>
         <input type="text" name="dest_airport" id="dest_airport" /><br><br>
 
