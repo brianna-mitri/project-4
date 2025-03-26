@@ -113,6 +113,21 @@
   .form-container button:hover {
       background-color: #2a4a97;
   }
+
+
+  .table-custom {
+    background-color: #f9f9f9 !important;
+  }
+
+  .table-custom thead th,
+  .table-custom tbody td {
+    background-color: #f9f9f9 !important;
+  }
+
+  .form-container td {
+      font-weight: bold;
+  }
+
 </style>
 
 <body>
@@ -197,8 +212,81 @@
                     </div>
                 </div> <!------------------------------------------------------------------------>
                 
+                <!-- Weather Side by Side Table -->
+                <!-- <h4 class="section-title mt-5">Weather</h4> -->
+                <div class="table-responsive">
+                    <table class="table align-middle table-custom" style="background-color: #f9f9f9">
+                        <thead>
+                            <tr>
+                                <!-- <th style="width: 25%;">Parameter</th> -->
+                                <!-- <th style="width: 25%;"></th> -->
+                                <th style="width: 25%;">Weather</th>
+                                <th style="width: 35%;">Origin</th>
+                                <th style="width: 35%;">Destination</th>
+                            </tr>
+                        </thead>
+                        <!-- all weather fields-->
+                        <tbody>
 
-                
+                            <tr>
+                                <td>Precipitation (1 hr)</td>
+                                <td><input class="form-control" name="precip_accum_1_hr" /></td>
+                                <td><input class="form-control" name="dest_precip_accum_1_hr" /></td>
+                            </tr>
+                            <tr>
+                                <td>Precipitation (6 hrs)</td>
+                                <td><input class="form-control" name="precip_accum_6_hr" required/></td>
+                                <td><input class="form-control" name="dest_precip_accum_6_hr" required/></td>
+                            </tr>
+                            <tr>
+                                <td>Air Temperature (°F)</td>
+                                <td><input class="form-control" name="air_temp" required/></td>
+                                <td><input class="form-control" name="dest_air_temp" required/></td>
+                            </tr>
+                            <tr>
+                                <td>Dew Point Temperature</td>
+                                <td><input class="form-control" name="dew_point_temp" required/></td>
+                                <td><input class="form-control" name="dest_dew_point_temp" required/></td>
+                            </tr>
+                            <tr>
+                                <td>Relative Humidity (%)</td>
+                                <td><input class="form-control" name="relative_humidity" required/></td>
+                                <td><input class="form-control" name="dest_relative_humidity" required/></td>
+                            </tr>
+                            <tr>
+                                <td>Wind Speed (mph)</td>
+                                <td><input class="form-control" name="wind_speed" required/></td>
+                                <td><input class="form-control" name="dest_wind_speed" required/></td>
+                            </tr>
+                            <tr>
+                                <td>Wind Direction (°)</td>
+                                <td><input class="form-control" name="wind_direction" required/></td>
+                                <td><input class="form-control" name="dest_wind_direction" required/></td>
+                            </tr>
+                            <tr>
+                                <td>Wind Gust (mph)</td>
+                                <td><input class="form-control" name="wind_gust" required/></td>
+                                <td><input class="form-control" name="dest_wind_gust" required/></td>
+                            </tr>
+                            <tr>
+                                <td>Visibility (miles)</td>
+                                <td><input class="form-control" name="visibility" required/></td>
+                                <td><input class="form-control" name="dest_visibility" required/></td>
+                            </tr>
+                            <tr>
+                                <td>Ceiling (feet)</td>
+                                <td><input class="form-control" name="ceiling" required/></td>
+                                <td><input class="form-control" name="dest_ceiling" required/></td>
+                            </tr>
+                            <tr>
+                                <td>Sea Level Pressure (hPa)</td>
+                                <td><input class="form-control" name="sea_level_pressure" required/></td>
+                                <td><input class="form-control" name="dest_sea_level_pressure" required/></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div> <!------------------------------------------------------------------------>
                 
                 <label for="airplaneModel">Airplane Model:</label>
                 <input type="text" id="airplaneModel" name="airplaneModel" readonly>
