@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 # load for predictions
 preprocessor = joblib.load('preprocessor.joblib')
-model = tf.keras.models.load_model('flight_delays_sequential_3.keras')
+model = tf.keras.models.load_model('NN_model_binomial.keras')
 #model = tf.keras.models.load_model('flight_delays.h5')
 
 
@@ -110,8 +110,8 @@ def predict():
             month_sin = math.sin(2 * math.pi * (parsed_date.month / 12.0))
             month_cos = math.cos(2 * math.pi * (parsed_date.month / 12.0))
 
-            day_sin = math.sin(2 * math.pi (parsed_date.day / 31.0))
-            day_cos = math.cos(2 * math.pi (parsed_date.day / 31.0))
+            day_sin = math.sin(2 * math.pi * (parsed_date.day / 31.0))
+            day_cos = math.cos(2 * math.pi * (parsed_date.day / 31.0))
 
             dow_sin = math.sin(2 * math.pi * (parsed_date.weekday() / 7.0))
             dow_cos = math.cos(2 * math.pi * (parsed_date.weekday() / 7.0))
@@ -120,11 +120,11 @@ def predict():
             minutes_cos = math.cos(2 * math.pi * total_minutes / 1440.0)
 
             # wind direction (360 degrees)
-            wind_rad = np.deg2rad(wind_direction)
+            wind_rad = np.deg2rad(float(wind_direction))
             wind_dir_sin = np.sin(wind_rad)
             wind_dir_cos = np.cos(wind_rad)
 
-            dest_wind_rad = np.deg2rad(dest_wind_direction)
+            dest_wind_rad = np.deg2rad(float(dest_wind_direction))
             dest_wind_dir_sin = np.sin(dest_wind_rad)
             dest_wind_dir_cos = np.cos(dest_wind_rad)
 
@@ -144,7 +144,7 @@ def predict():
                 "Scheduled Elapsed Time": int(flight_length_min),
                 "Carrier Code": carrier_code,
                 "Destination Airport": dest_airport,
-                "Manufacturer": manufacturer,
+                "Manufacturer": manufacturer.upper(),
                 "Model": plane_model,
                 "Aircraft Age": int(aircraft_age),
                 "Aircraft Age Missing": int(aircraft_age_missing),
@@ -165,8 +165,8 @@ def predict():
                 "Ceiling Missing": int(ceiling_missing),
                 "Sea Level Pressure": float(sea_level_pressure),
                 "Sea Level Pressure Missing": int(sea_level_pressure_missing),
-                "Destination Precipitation Accumulation One Hour": float(dest_precip_accum_1_hr),
-                "Destination Precipitation Accumulation Six Hours": float(dest_precip_accum_6_hr),
+                "Destination Precipication Accumulation One Hour": float(dest_precip_accum_1_hr),
+                "Destination Precipitation Six Hours": float(dest_precip_accum_6_hr),
                 "Destination Air Temperature": float(dest_air_temp),
                 "Destination Dew Point Temperature": float(dest_dew_point_temp),
                 "Destination Relative Humidity": float(dest_relative_humidity),
@@ -192,9 +192,17 @@ def predict():
 
 
             # run prediction to return
-            result = model.predict(input_processed)
-            return render_template('dummy.html', prediction=str(result[0]))
-            #return render_template('dummy.html', dest_airport)
+            result = model.predict(input_processed)  #delay probability
+            delay_prob = result[0][0]
+
+            if delay_prob >= 0.5:
+                prediction = 'Delay.'
+            else: 
+                prediction = 'No delay!'
+
+            return render_template('dummy.html', prediction=f"{prediction} {str(round(delay_prob * 100, 2))}% chance of delay")
+            #return render_template('dummy.html', prediction=f"string{delay_prob}")
+            #return render_template('dummy.html', prediction=date)
 
         except Exception as e:
             # handle error
