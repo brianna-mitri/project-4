@@ -177,19 +177,19 @@ def predict():
         }
 
         # convert all variables into a df
-        row_df = pd.DataFrame([row_dict])
+        input_df = pd.DataFrame([row_dict])
 
-        # convert inputs as needed
-        user_input = [[dest_airport, weather]]
-
+        # ----------------------------------------
+        # Preprocess
+        # ----------------------------------------
         # preprocessor
-        #input_processed = preprocessor.transform(user_input)
+        input_processed = preprocessor.transform(input_df)
 
 
         # run prediction to return
-        #result = model.predict(input_processed)
-        #return render_template('dummy.html', prediction=str(result[0]))
-        return render_template('dummy.html', dest_airport)
+        result = model.predict(input_processed)
+        return render_template('dummy.html', prediction=str(result[0]))
+        #return render_template('dummy.html', dest_airport)
     
     except Exception as e:
         # handle error
