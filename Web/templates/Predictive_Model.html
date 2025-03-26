@@ -84,7 +84,7 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-      max-width: 500px;
+      max-width: 1000px;
       width: 100%;
       text-align: left;
   }
@@ -116,22 +116,89 @@
 </style>
 
 <body>
+    <!-- Main Content Container-->
     <div class="container">
         <h2>Flight Selection for Forecasting Potential Delays</h2>
+        <!-------------------------------->
+        <!-- Flask Form -->
+        <!-------------------------------->
+        <form action="{{ url_for('predict') }}" method="POST">
+            <div class="form-container">
+                <!------------------------------------------------------------------------>
+                <!-- Row 1 -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="departureDate">Date of Departure (MM/DD/YYYY):</label>
+                        <input type="date" id="departureDate" name="departureDate" required>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="departureTime">Time of Departure (HH:MM):</label>
+                        <input type="time" id="departureTime" name="departureTime" required>
+                    </div>
+                </div>
 
-        <div class="form-container">
-            <form id="flightForm">
-                <label for="departureDate">Date of Departure (MM/DD/YYYY):</label>
-                <input type="date" id="departureDate" name="departureDate" required>
+                <!-- Row 2 -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="destination">Destination Airport:</label>
+                        <input type="text" id="destination" name="destination" placeholder="Enter Destination Airport" required>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="arrivalTime">Arrival Time (HH:MM):</label>
+                        <input type="time" id="arrivalTime" name="arrivalTime" required>
+                    </div>
+                </div>
 
-                <label for="departureTime">Time of Departure (HH:MM:SS):</label>
-                <input type="time" id="departureTime" name="departureTime" required>
+                <!-- Row 3 -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="airline">Airline (Carrier Code):</label>
+                        <input type="text" id="airline" name="airline" placeholder="Enter Airline" required>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="plane_model">Plane Model:</label>
+                        <input type="text" name="plane_model" id="plane_model" placeholder="Enter Plane Model" required>
+                    </div>
+                </div>
 
-                <label for="airline">Airline:</label>
-                <input type="text" id="airline" name="airline" placeholder="Enter Airline" required>
+                <!-- Row 4 -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="manufacturer">Manufacturer:</label>
+                        <input type="text" name="manufacturer" id="manufacturer" placeholder="Enter Manufacturer" required>
+                    </div>
+                    
+                    <div class="col-md-3 mb-3">
+                        <label for="aircraft_age">Aircraft Age:</label>
+                        <input type="text" name="aircraft_age" id="aircraft_age" placeholder="Enter Aircraft Age" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="engine_type">Engine Type:</label>
+                        <input type="text" name="engine_type" id="engine_type" placeholder="Enter Engine Type" required>
+                    </div>
+                </div>
 
-                <label for="destination">Destination Airport:</label>
-                <input type="text" id="destination" name="destination" placeholder="Enter Destination Airport" required>
+                <!-- Row 5 -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="seat_cnt">Number of Seats:</label>
+                        <input type="text" id="seat_cnt" name="seat_cnt" placeholder="Enter Number of Seats" required>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="builder_certificated">Builder Type Certificated?</label>
+                        <select class="form-select" id="builder_certificated" name="builder_certificated" placeholder="Select one" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                          </select>
+                    </div>
+                </div> <!------------------------------------------------------------------------>
+                
+
+                
                 
                 <label for="airplaneModel">Airplane Model:</label>
                 <input type="text" id="airplaneModel" name="airplaneModel" readonly>
@@ -142,8 +209,10 @@
                 <button type="button" onclick="generateWeatherCondition()">Generate Weather Condition</button>
                 
                 <button type="submit">Submit</button>
-            </form>
-        </div>
+                
+            </div>
+        </form>
+
     </div>
 
     <nav class="navbar">
