@@ -11,7 +11,7 @@
     <h1>Predict Flight Departure Delay</h1>
     <form action="{{ url_for('predict') }}" method="POST">
         <!----------------------------------------------->
-        <!-- TIME INFO -->
+        <!-- Time Info -->
         <!----------------------------------------------->
         <!-- Date -->
         <label for="date">Departure Date (mm/dd/yyyy)</label>
@@ -119,8 +119,57 @@
         <!-- Sea Level Pressure -->
         <label for="sea_level_pressure">Sea Level Pressure:</label>
         <input type="text" name="sea_level_pressure" id="sea_level_pressure" /><br><br>
-      
+        
+        <!----------------------------------------------->
+        <!-- Destination: Weather Info -->
+        <!----------------------------------------------->
+        <!-- Precipitation Accumulation One Hour -->
+        <label for="dest_precip_accum_1_hr">Precipitation Accumulation One Hour:</label>
+        <input type="text" name="dest_precip_accum_1_hr" id="dest_precip_accum_1_hr" /><br><br>
 
+        <!-- Precipitation Accumulation Six Hours -->
+        <label for="dest_precip_accum_6_hr">Precipitation Accumulation Six Hours:</label>
+        <input type="text" name="dest_precip_accum_6_hr" id="dest_precip_accum_6_hr" /><br><br>
+
+        <!-- Air Temperature -->
+        <label for="dest_air_temp">Air Temperature:</label>
+        <input type="text" name="dest_air_temp" id="dest_air_temp" /><br><br>
+
+        <!-- Dew Point Temperature -->
+        <label for="dest_dew_point_temp">Dew Point Temperature:</label>
+        <input type="text" name="dest_dew_point_temp" id="dest_dew_point_temp" /><br><br>
+
+        <!-- Relative Humidity -->
+        <label for="dest_relative_humidity">Relative Humidity:</label>
+        <input type="text" name="dest_relative_humidity" id="dest_relative_humidity" /><br><br>
+
+        <!-- Wind Speed -->
+        <label for="dest_wind_speed">Wind Speed:</label>
+        <input type="text" name="dest_wind_speed" id="dest_wind_speed" /><br><br>
+
+        <!-- Wind Direction -->
+        <label for="dest_wind_direction">Wind Direction:</label>
+        <input type="text" name="dest_wind_direction" id="dest_wind_direction" /><br><br>
+
+        <!-- Wind Gust -->
+        <label for="dest_wind_gust">Wind Gust:</label>
+        <input type="text" name="dest_wind_gust" id="dest_wind_gust" /><br><br>
+
+        <!-- Visibility -->
+        <label for="dest_visibility">Visibility:</label>
+        <input type="text" name="dest_visibility" id="dest_visibility" /><br><br>
+
+        <!-- Ceiling -->
+        <label for="dest_ceiling">Ceiling:</label>
+        <input type="text" name="dest_ceiling" id="dest_ceiling" /><br><br>
+
+        <!-- Sea Level Pressure -->
+        <label for="dest_sea_level_pressure">Sea Level Pressure:</label>
+        <input type="text" name="dest_sea_level_pressure" id="dest_sea_level_pressure" /><br><br>
+      
+        <!----------------------------------------------->
+        <!-- SUBMIT -->
+        <!----------------------------------------------->
         <button type="submit">Predict</button>
     </form> 
 

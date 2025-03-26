@@ -81,9 +81,22 @@ def predict():
         sea_level_pressure = request.form.get('sea_level_pressure')
         sea_level_pressure_missing = 0  #default
 
+        # Destination: Weather Info
+        dest_precip_accum_1_hr = request.form.get('dest_precip_accum_1_hr')
+        dest_precip_accum_6_hr = request.form.get('dest_precip_accum_6_hr')
+        dest_air_temp = request.form.get('dest_air_temp')
+        dest_dew_point_temp = request.form.get('dest_dew_point_temp')
+        dest_relative_humidity = request.form.get('dest_relative_humidity')
+        dest_wind_speed = request.form.get('dest_wind_speed')
+        dest_wind_direction = request.form.get('dest_wind_direction')
+        dest_wind_gust = request.form.get('dest_wind_gust')
+        dest_visibility = request.form.get('dest_visibility')
 
-        # dest_airport = request.form.get('dest_airport')
-        # weather = request.form.get('weather')
+        dest_ceiling = request.form.get('dest_ceiling')
+        dest_ceiling_missing = 0  #default
+
+        dest_sea_level_pressure = request.form.get('dest_sea_level_pressure')
+        dest_sea_level_pressure_missing = 0  #default
         
         # ----------------------------------------
         # convert cyclical variables
@@ -105,6 +118,10 @@ def predict():
         wind_rad = np.deg2rad(wind_direction)
         wind_dir_sin = np.sin(wind_rad)
         wind_dir_cos = np.cos(wind_rad)
+
+        dest_wind_rad = np.deg2rad(dest_wind_direction)
+        dest_wind_dir_sin = np.sin(dest_wind_rad)
+        dest_wind_dir_cos = np.cos(dest_wind_rad)
 
         # ----------------------------------------
         # convert into a DF
@@ -142,7 +159,21 @@ def predict():
             "Ceiling": int(ceiling),
             "Ceiling Missing": int(ceiling_missing),
             "Sea Level Pressure": float(sea_level_pressure),
-            "Sea Level Pressure Missing": int(sea_level_pressure_missing)
+            "Sea Level Pressure Missing": int(sea_level_pressure_missing),
+            "Destination Precipitation Accumulation One Hour": float(dest_precip_accum_1_hr),
+            "Destination Precipitation Accumulation Six Hours": float(dest_precip_accum_6_hr),
+            "Destination Air Temperature": float(dest_air_temp),
+            "Destination Dew Point Temperature": float(dest_dew_point_temp),
+            "Destination Relative Humidity": float(dest_relative_humidity),
+            "Destination Wind Speed": float(dest_wind_speed),
+            "Destination Wind Direction (sin)": dest_wind_dir_sin,
+            "Destination Wind Direction (cos)": dest_wind_dir_cos,
+            "Destination Wind Gust": float(dest_wind_gust),
+            "Destination Visibility": float(dest_visibility),
+            "Destination Ceiling": int(dest_ceiling),
+            "Destination Ceiling Missing": int(dest_ceiling_missing),
+            "Destination Sea Level Pressure": float(dest_sea_level_pressure),
+            "Destination Sea Level Pressure Missing": int(dest_sea_level_pressure_missing)
         }
 
         # convert all variables into a df
