@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummy Form</title>
+</head>
+<body>
+
+    <!-- Form -->
+    <h1>Predict Flight Departure Delay</h1>
+    <form action="{{ url_for('predict') }}" method="POST">
+
+        <!-- Date -->
+        <label for="date">Departure Date (mm/dd/yyyy)</label>
+        <input type="text" name="date" id="date"/>
+
+        <!-- Departure Time HH:MM & AM/PM -->
+        <label for="departure_time">Departure Time (HH:MM):</label>
+        <input type="text" name="departure_time" id="departure_time" placeholder="03:45"/>
+
+        <label for="am_pm">AM/PM:</label>
+        <select name="am_pm" id="am_pm">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+        </select>
+
+        <label for="dest_airport">Destination Airport:</label>
+        <input type="text" name="dest_airport" id="dest_airport" /><br><br>
+
+        <label for="weather">Weather:</label>
+        <input type="text" name="weather" id="weather" /><br><br>
+
+        <button type="submit">Predict</button>
+    </form> 
+
+    <!-- Prediction Output -->
+     {% if prediction %}
+        <h2>Prediction:</h2>
+        <p>{{ prediction }}</p>
+     {% endif %}
+</body>
+</html>
