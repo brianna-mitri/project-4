@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Selection for Forecasting Potential Delays</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<style>
+  /* Custom Navbar Styling */
+  .navbar {
+      background: linear-gradient(45deg, #21f35d, #3a9ab7);
+      position: fixed; 
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      padding: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .navbar-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      padding-left: 0;
+      margin-top: 20px;
+      gap: 10px;
+  }
+
+  .navbar .nav-item {
+      width: 100%;
+      position: relative;
+  }
+
+  .navbar .nav-link {
+      color: black !important;
+      text-decoration: none;
+      padding: 10px 5px;
+      display: block;
+      margin-left: -10px;
+  }
+
+  .dropdown-menu {
+      background-color: #3a5db7;
+      position: absolute;
+      left: 100%;
+      top: 0;
+      min-width: 400px;
+      display: none;
+  }
+
+  .dropdown:hover > .dropdown-menu {
+      display: block;
+  }
+
+  .dropdown-item {
+      color: white !important;
+  }
+
+  .dropdown-item:hover {
+      background-color: #2a4a97;
+  }
+
+  .container {
+      margin-left: 270px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+  }
+
+  .form-container {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 100%;
+      text-align: left;
+  }
+
+  .form-container label {
+      font-weight: bold;
+  }
+
+  .form-container input, .form-container select, .form-container button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+
+  .form-container button {
+      background-color: #3a5db7;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+  }
+
+  .form-container button:hover {
+      background-color: #2a4a97;
+  }
+</style>
+
+<body>
+    <div class="container">
+        <h2>Flight Selection for Forecasting Potential Delays</h2>
+
+        <div class="form-container">
+            <form id="flightForm">
+                <label for="departureDate">Date of Departure (MM/DD/YYYY):</label>
+                <input type="date" id="departureDate" name="departureDate" required>
+
+                <label for="departureTime">Time of Departure (HH:MM:SS):</label>
+                <input type="time" id="departureTime" name="departureTime" required>
+
+                <label for="airline">Airline:</label>
+                <input type="text" id="airline" name="airline" placeholder="Enter Airline" required>
+
+                <label for="destination">Destination Airport:</label>
+                <input type="text" id="destination" name="destination" placeholder="Enter Destination Airport" required>
+                
+                <label for="airplaneModel">Airplane Model:</label>
+                <input type="text" id="airplaneModel" name="airplaneModel" readonly>
+                <button type="button" onclick="generateAirplaneModel()">Generate Airplane Model</button>
+                
+                <label for="weatherCondition">Weather Condition:</label>
+                <input type="text" id="weatherCondition" name="weatherCondition" readonly>
+                <button type="button" onclick="generateWeatherCondition()">Generate Weather Condition</button>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="./index.html"><strong>🏠 Home</strong></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownMenu" role="button">
+                        <strong>🛩️ LAX Flight Information</strong>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="https://public.tableau.com/app/profile/viz/Tableau_Challenge_Dashboard2/TrendsandPeakUsage?publish=yes" target="_blank">👩‍✈️ Tableau Data Visualization Dashboard #1</a></li>
+                        <li><a class="dropdown-item" href="https://public.tableau.com/app/profile/casey.wright8419/viz/Tableau_Visualization2/TableauDashboard2?publish=yes" target="_blank">👨‍✈️ Tableau Data Visualization Dashboard #2</a></li>
+                        <li><a class="dropdown-item" href="./Predictive_Model.html">✈️ Flight Selection for Forecasting Potential Delays</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        function generateAirplaneModel() {
+            const models = ["Boeing 737", "Airbus A320", "Boeing 777", "Airbus A380", "Embraer E190", "Cessna 172"];
+            document.getElementById("airplaneModel").value = models[Math.floor(Math.random() * models.length)];
+        }
+
+        function generateWeatherCondition() {
+            const conditions = ["Sunny", "Rainy", "Foggy", "Stormy", "Snowy", "Windy", "Cloudy"];
+            document.getElementById("weatherCondition").value = conditions[Math.floor(Math.random() * conditions.length)];
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
