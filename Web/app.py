@@ -37,7 +37,7 @@ def predict():
     '''
     if request.method == 'GET':
         # render form page
-        return render_template('dummy.html')
+        return render_template('Predictive_Model.html')
     else: 
         # handle form submission
         try:
@@ -45,16 +45,28 @@ def predict():
             # parse input from form
             # ----------------------------------------
             #  time info
-            date = request.form.get('date')
-            parsed_date = datetime.strptime(date, '%m/%d/%Y')
+            departure_date = request.form.get('departure_date')
+            parsed_date = datetime.strptime(departure_date, '%Y-%m-%d')
+            # parsed_date = datetime.strptime(departure_date, '%m/%d/%Y')
 
-            scheduled_departure_time = request.form.get('departure_time')  #03:45 (ex)
-            scheduled_am_pm = request.form.get('am_pm')  #am or pm
-            datetime_str = f'{scheduled_departure_time} {scheduled_am_pm}'
-            parsed_time = datetime.strptime(datetime_str, "%I:%M %p")
+            # departure time (minutes)
+            scheduled_departure_time = request.form.get('departure_time')  #14:45 (ex)
+            #scheduled_am_pm = request.form.get('am_pm')  #am or pm
+            #datetime_str = f'{scheduled_departure_time} {scheduled_am_pm}'
+            parsed_time = datetime.strptime(scheduled_departure_time, "%H:%M")
+            
+            # total flight length in minutes
             total_minutes = parsed_time.hour * 60 + parsed_time.minute
+            # flight_length_min = request.form.get('flight_length_min')  #scheduled flight length in minutes
+            arrival_time = request.form.get('arrival_time')
+            parsed_arrival_time = datetime.strptime(arrival_time, "%H:%M")
+            parsed_arrival_mins = parsed_arrival_time.hour * 60 + parsed_arrival_time.minute
 
-            flight_length_min = request.form.get('flight_length_min')  #scheduled flight length in minutes
+            if parsed_arrival_mins < total_minutes:
+                # add day's worth of minutes if arrival time is the next day
+                parsed_arrival_mins += 24 * 60
+
+            flight_length_min = parsed_arrival_mins - total_minutes  #get expected flight length
 
             # Airline/Plane info
             carrier_code = request.form.get('carrier_code')  #airline
@@ -200,13 +212,14 @@ def predict():
             else: 
                 prediction = 'No delay!'
 
-            return render_template('dummy.html', prediction=f"{prediction} {str(round(delay_prob * 100, 2))}% chance of delay")
+            return render_template('Predictive_Model.html', prediction=f"{prediction} {str(round(delay_prob * 100, 2))}% chance of delay")
             #return render_template('dummy.html', prediction=f"string{delay_prob}")
             #return render_template('dummy.html', prediction=date)
 
         except Exception as e:
+            
             # handle error
-            return render_template('dummy.html', prediction=f"Error: {str(e)}")
+            return render_template('Predictive_Model.html', prediction=f"Error: {str(e)}")
 
 if __name__ == '__main__':
     # start flask app
