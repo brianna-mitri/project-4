@@ -11,6 +11,10 @@ Preprocessing/Output/Delays/modeling_data.csv
 Preprocessing/Output/Delays/flight_delays.csv
 Preprocessing/Output/Delays/modeling_data_testing.csv
 Preprocessing/Output/Delays/modeling_data_training.csv
+Work/_Cleanup/Preprocessing/Output/Split_Train_Test/balanced/
+Work/_Cleanup/Preprocessing/Output/Split_Train_Test/dest_binomial/
+Work/_Cleanup/Preprocessing/Output/Split_Train_Test/dest_narrow/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

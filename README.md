@@ -12,8 +12,8 @@ The repository is organized as follows. High-level folders contain further subdi
 |Work|Collaborator work folders. ***Can be safely ignored.***|
 
 ## Important Files
-PowerPoint slides can be found here.  
-Optimization results can be found here.
+Presentation slides can be found [here](https://github.com/brianna-mitri/project-4/blob/main/presentation.pdf).  
+Optimization results in Excel format can be found [here](https://github.com/brianna-mitri/project-4/blob/main/Machine_Learning/Optimization%20Summary.xlsx).
 
 # Analysis
 ## Overview
@@ -22,26 +22,26 @@ Optimization results can be found here.
 The data consists of 3 parts pulled from U.S. federal government web sites:
 |Site|Data|
 |---|---|
-|Bureau of Transportation Statistics|Flights originating from LAX, 2020-2024|
-|Federal Aviation Administration|Aircraft data by tail number|
-|National Weather Service|Historical weather observations for LAX and destination airports|
+|[Bureau of Transportation Statistics](https://transtats.bts.gov/ONTIME/Departures.aspx)|Flights originating from LAX, 2020-2024|
+|[Federal Aviation Administration](https://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/releasable_aircraft_download)|Aircraft data by tail number|
+|[National Weather Service](https://www.weather.gov/lox/observations_historical)|Historical weather observations for LAX and destination airports|
 
 ## Results
 ### Data Preprocessing
 Preprocessing consists of 3 stages:  
-1. Cleaning weather data files with `cleaning_weather.ipynb`
+1. Cleaning weather data files with `1_cleaning_weather.ipynb`
    - Check for nulls and address them as appropriate
    - Data values are converted to machine learning-friendly formats
    - Create columns for origin (LAX) as well as destination (specific to flight)
-2. Cleaning flight and aircraft data with `cleaning_flights.ipynb`
+2. Cleaning flight and aircraft data with `2_cleaning_flights.ipynb`
    - Flight and aircraft data are cleaned and merged by tail number
    - This data is then merged with the cleaned weather data
-     - For LAX weather, the data was merged by datetime for the most recent entry to the scheduled departure time
-     - For destination weather, the data merged similarly for the scheduled arrival time. This is a substitution for forecast data.
+     - For LAX weather, the data was merged by datetime for the observation at or most recently before the scheduled departure time
+     - For destination weather, the data merged similarly for the scheduled arrival time, based on the scheduled arrived time. This is a substitution for forecast data.
    - Two output files are created:
      - `flight_delays.zip` for creating visualizations with the full dataset
      - `modeling_data.zip` for machine learning (ML) models. This file lacks columns such as unique identifiers undesirable for ML.
-3. Splitting data with `splitting_data.ipynb`
+3. Splitting data with `3_splitting_data.ipynb`
    - Data is pre-split into training and testing data sets for efficiently running multiple models in a comparable fashion
      - `x_train.zip` & `y_train.zip` for training
      - `x_test.zip` & `y_test.zip` for testing
@@ -117,4 +117,4 @@ Using Tensorflow and automating the tuning of hyperparameters with Keras Tuner, 
     accuracy                           0.83    165982
 
 ## Summary
-Of the models tested, the one selected for the final product was the Neural Network model. This model performed similarly to K-Nearest Neighbors, but with slightly higher precision for `Is Delayed` and marginally better overall accuracy.
+Of the models tested, the one selected for the final product was the Neural Network model. This model performed similarly to K-Nearest Neighbors, but with slightly higher precision for `Is Delayed` and marginally better overall accuracy. Still, the model needs improvement through better selection of features (removing some, adding others) and tuning of hyperparameters.
