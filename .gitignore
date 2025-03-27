@@ -14,7 +14,10 @@ Preprocessing/Output/Delays/modeling_data_training.csv
 Work/_Cleanup/Preprocessing/Output/Split_Train_Test/balanced/
 Work/_Cleanup/Preprocessing/Output/Split_Train_Test/dest_binomial/
 Work/_Cleanup/Preprocessing/Output/Split_Train_Test/dest_narrow/
+Database/delays_database.sqlite
 
+# Batch repo cleanup
+cleanup.bat
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
