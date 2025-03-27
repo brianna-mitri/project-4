@@ -213,3 +213,5 @@ Preprocessing/Output/Split_Train_Test/dest_binomial/x_train.zip
 Preprocessing/Output/Split_Train_Test/dest_binomial/y_train.zip
 Preprocessing/Output/Split_Train_Test/dest_binomial/x_test.zip
 Preprocessing/Output/Split_Train_Test/dest_binomial/y_test.zip
+Preprocessing/Output/Split_Train_Test/sqlite/x_train.zip
+Preprocessing/delays_database.db

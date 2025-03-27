@@ -1,3 +1,4 @@
 # Directory
-|Folder|File|Description|
-|---|---|---|
+|Folder|Description|
+|---|---|
+|Delays|
