@@ -69,50 +69,50 @@ def predict():
             flight_length_min = parsed_arrival_mins - total_minutes  #get expected flight length
 
             # Airline/Plane info
-            carrier_code = request.form.get('carrier_code', '').strip().upper()  #airline
-            dest_airport = request.form.get('dest_airport', '').strip().upper()
-            manufacturer = request.form.get('manufacturer', '').strip().upper()
-            plane_model = request.form.get('plane_model', '').strip()
+            carrier_code = request.form.get('carrier_code').strip().upper()  #airline
+            dest_airport = request.form.get('dest_airport').strip().upper()
+            manufacturer = request.form.get('manufacturer').strip().upper()
+            plane_model = request.form.get('plane_model').strip()
 
-            aircraft_age = request.form.get('aircraft_age', '').strip()
+            aircraft_age = request.form.get('aircraft_age').strip()
             aircraft_age_missing = 0  #default
 
-            engine_type = request.form.get('engine_type', '').strip()   #.upper???? 
-            seat_cnt = request.form.get('seat_cnt', '').strip()
+            engine_type = request.form.get('engine_type').strip()   #.upper???? 
+            seat_cnt = request.form.get('seat_cnt').strip()
             builder_certificated = request.form.get('builder_certificated')  #true or false
 
             # Origin: Weather Info
-            precip_accum_1_hr = request.form.get('precip_accum_1_hr', '').strip()
-            precip_accum_6_hr = request.form.get('precip_accum_6_hr', '').strip()
-            air_temp = request.form.get('air_temp', '').strip()
-            dew_point_temp = request.form.get('dew_point_temp', '').strip()
-            relative_humidity = request.form.get('relative_humidity', '').strip()
-            wind_speed = request.form.get('wind_speed', '').strip()
-            wind_direction = request.form.get('wind_direction', '').strip()
-            wind_gust = request.form.get('wind_gust', '').strip()
-            visibility = request.form.get('visibility', '').strip()
+            precip_accum_1_hr = request.form.get('precip_accum_1_hr').strip()
+            precip_accum_6_hr = request.form.get('precip_accum_6_hr').strip()
+            air_temp = request.form.get('air_temp').strip()
+            dew_point_temp = request.form.get('dew_point_temp').strip()
+            relative_humidity = request.form.get('relative_humidity').strip()
+            wind_speed = request.form.get('wind_speed').strip()
+            wind_direction = request.form.get('wind_direction').strip()
+            wind_gust = request.form.get('wind_gust').strip()
+            visibility = request.form.get('visibility').strip()
 
-            ceiling = request.form.get('ceiling', '').strip()
+            ceiling = request.form.get('ceiling').strip()
             ceiling_missing = 0  #default
 
-            sea_level_pressure = request.form.get('sea_level_pressure', '').strip()
+            sea_level_pressure = request.form.get('sea_level_pressure').strip()
             sea_level_pressure_missing = 0  #default
 
             # Destination: Weather Info
-            dest_precip_accum_1_hr = request.form.get('dest_precip_accum_1_hr', '').strip()
-            dest_precip_accum_6_hr = request.form.get('dest_precip_accum_6_hr', '').strip()
-            dest_air_temp = request.form.get('dest_air_temp', '').strip()
-            dest_dew_point_temp = request.form.get('dest_dew_point_temp', '').strip()
-            dest_relative_humidity = request.form.get('dest_relative_humidity', '').strip()
-            dest_wind_speed = request.form.get('dest_wind_speed', '').strip()
-            dest_wind_direction = request.form.get('dest_wind_direction', '').strip()
-            dest_wind_gust = request.form.get('dest_wind_gust', '').strip()
-            dest_visibility = request.form.get('dest_visibility', '').strip()
+            dest_precip_accum_1_hr = request.form.get('dest_precip_accum_1_hr').strip()
+            dest_precip_accum_6_hr = request.form.get('dest_precip_accum_6_hr').strip()
+            dest_air_temp = request.form.get('dest_air_temp').strip()
+            dest_dew_point_temp = request.form.get('dest_dew_point_temp').strip()
+            dest_relative_humidity = request.form.get('dest_relative_humidity').strip()
+            dest_wind_speed = request.form.get('dest_wind_speed').strip()
+            dest_wind_direction = request.form.get('dest_wind_direction').strip()
+            dest_wind_gust = request.form.get('dest_wind_gust').strip()
+            dest_visibility = request.form.get('dest_visibility').strip()
 
-            dest_ceiling = request.form.get('dest_ceiling', '').strip()
+            dest_ceiling = request.form.get('dest_ceiling').strip()
             dest_ceiling_missing = 0  #default
 
-            dest_sea_level_pressure = request.form.get('dest_sea_level_pressure', '').strip()
+            dest_sea_level_pressure = request.form.get('dest_sea_level_pressure').strip()
             dest_sea_level_pressure_missing = 0  #default
             
             # ----------------------------------------
