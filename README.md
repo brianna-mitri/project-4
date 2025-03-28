@@ -13,7 +13,7 @@ The repository is organized as follows. High-level folders contain further subdi
 |Work|Collaborator work folders. ***Can be safely ignored.***|
 
 ### Important Files
-Presentation slides can be found [here](https://github.com/brianna-mitri/project-4/blob/main/presentation.pdf).  
+Presentation slides can be found [here](https://github.com/brianna-mitri/project-4/blob/main/Project_4-Group_1-Presentation-Predicting_Departure_Delays.pdf).  
 Optimization results in Excel format can be found [here](https://github.com/brianna-mitri/project-4/blob/main/Machine_Learning/Optimization%20Summary.xlsx).  
 
 ### Zipped files
