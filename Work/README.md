@@ -1,3 +1,2 @@
-# Directory
-|Folder|File|Description|
-|---|---|---|
+# Work
+***This folder can be safely ignored.***
